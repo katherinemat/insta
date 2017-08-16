@@ -6,8 +6,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Header />
-      <Photos />
+        <Header />
+        <Photos />
         <p>{new Date().toLocaleTimeString()}wattup</p>
       </div>
     );

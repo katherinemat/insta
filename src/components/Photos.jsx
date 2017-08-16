@@ -1,6 +1,8 @@
 import React from "react";
-import Feed from "./Feed";
 import Photo from "../models/photo.js";
+
+import Feed from "./Feed";
+import NewPhoto from "./NewPhoto";
 
 class Photos extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class Photos extends React.Component {
   render() {
     return (
       <div>
+        <NewPhoto />
         <Feed photoList = {this.state.masterPhotoList} />
       </div>
     );
