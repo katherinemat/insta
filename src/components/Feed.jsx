@@ -1,21 +1,22 @@
 import React from "react";
 import Photo from "./Photo";
+import PropTypes from "prop-types";
 
-class Feed extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      photoList: [],
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <Photo title="test title" />
-      </div>
-    );
-  }
+function Feed(props) {
+  return (
+    <div>
+      <p>feed component</p>
+      {props.photoList.map((photo, index) =>
+        <Photo title={photo.title}
+          link={photo.link}
+          key={index} />
+      )}
+    </div>
+  );
 }
+
+Feed.propTypes = {
+  photoList: PropTypes.array
+};
 
 export default Feed;

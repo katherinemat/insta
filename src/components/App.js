@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Header from "./Header";
-import Feed from "./Feed";
+import Photos from "./Photos";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
       <Header />
-      <Feed />
+      <Photos />
         <p>{new Date().toLocaleTimeString()}wattup</p>
       </div>
     );
