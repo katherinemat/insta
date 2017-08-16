@@ -11,7 +11,8 @@ function Photo(props) {
 }
 
 Photo.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired
 };
 
 export default Photo;
