@@ -21,6 +21,13 @@ class Photos extends React.Component {
     this.addNewPhoto = this.addNewPhoto.bind(this);
     this.showPhotoDetailModal = this.showPhotoDetailModal.bind(this);
     this.hidePhotoDetailModal = this.hidePhotoDetailModal.bind(this);
+    this.setSelectedPhoto = this.setSelectedPhoto.bind(this);
+  }
+
+  setSelectedPhoto(clickedPhoto) {
+    console.log("set selected photo");
+    this.setState({selectedPhoto: clickedPhoto});
+    this.showPhotoDetailModal();
   }
 
   showPhotoDetailModal(){
@@ -60,7 +67,9 @@ class Photos extends React.Component {
 
         <NewPhoto onNewPhotoCreation = {this.addNewPhoto}/>
 
-        <Feed photoList = {this.state.masterPhotoList} />
+        <Feed
+          photoList = {this.state.masterPhotoList}
+          openClickedPhoto = {this.setSelectedPhoto}/>
       </div>
     );
   }

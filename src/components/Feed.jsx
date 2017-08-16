@@ -7,9 +7,9 @@ function Feed(props) {
     <div>
       <p>feed component</p>
       {props.photoList.map((photo, index) =>
-        <Photo title={photo.title}
-          link={photo.link}
-          key={index} />
+        <Photo photo={photo}
+          key={index}
+          openClickedPhoto={props.openClickedPhoto}/>
       )}
     </div>
   );

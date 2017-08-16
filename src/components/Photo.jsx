@@ -1,18 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
+import PhotoObject from "../models/photo.js";
 
-function Photo(props) {
-  return (
-    <div>
-      <p>{props.title}</p>
-      <img src={props.link} />
-    </div>
-  );
+class Photo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.viewDetails = this.viewDetails.bind(this);
+  }
+
+  viewDetails() {
+    this.props.openClickedPhoto(this.props.photo);
+  }
+
+  render() {
+    return (
+      <div>
+        <p>{this.props.photo.title}</p>
+        <img src={this.props.photo.link}
+          onClick={this.viewDetails}/>
+      </div>
+    );
+  }
+
 }
 
 Photo.propTypes = {
-  title: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired
+  photo: PropTypes.instanceOf(PhotoObject).isRequired,
+  openClickedPhoto: PropTypes.func
 };
 
 export default Photo;
