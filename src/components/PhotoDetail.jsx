@@ -5,18 +5,32 @@ import Photo from "../models/photo.js";
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 
-function PhotoDetail(props) {
-  return (
-    <div>
-      <p>{props.selectedPhoto.title}</p>
-      <img src={props.selectedPhoto.link} />
-      <Button
-        bsStyle="info"
-        bsSize="small" >
-        Photo Detail
-      </Button>
-    </div>
-  );
+class PhotoDetail extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handleDeletePhotoButtonClick = this.handleDeletePhotoButtonClick.bind(this);
+  }
+
+  handleDeletePhotoButtonClick() {
+    this.props.deleteSelectedPhoto(this.props.selectedPhoto);
+    console.log("delete button clicked");
+  }
+
+  render() {
+    return (
+      <div>
+        <p>{this.props.selectedPhoto.title}</p>
+        <img src={this.props.selectedPhoto.link} />
+        <Button
+          bsStyle="info"
+          bsSize="small"
+          onClick={this.handleDeletePhotoButtonClick}>
+          Delete Photo
+        </Button>
+      </div>
+    );
+  }
 }
 
 PhotoDetail.propTypes = {

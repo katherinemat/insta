@@ -22,10 +22,10 @@ class Photos extends React.Component {
     this.showPhotoDetailModal = this.showPhotoDetailModal.bind(this);
     this.hidePhotoDetailModal = this.hidePhotoDetailModal.bind(this);
     this.setSelectedPhoto = this.setSelectedPhoto.bind(this);
+    this.deletePhoto = this.deletePhoto.bind(this);
   }
 
   setSelectedPhoto(clickedPhoto) {
-    console.log("set selected photo");
     this.setState({selectedPhoto: clickedPhoto});
     this.showPhotoDetailModal();
   }
@@ -43,9 +43,17 @@ class Photos extends React.Component {
   }
 
   addNewPhoto(newPhoto) {
-    let newMasterPhotoList = this.state.masterPhotoList.slice();
+    let newMasterPhotoList = this.state.masterPhotoList;
     newMasterPhotoList.push(newPhoto);
     this.setState({masterPhotoList: newMasterPhotoList});
+  }
+
+  deletePhoto(photoToDelete) {
+    let newMasterPhotoList = this.state.masterPhotoList.filter(function(photo) {
+      return photo.link !== photoToDelete.link;
+    });
+    this.setState({masterPhotoList: newMasterPhotoList});
+    this.hidePhotoDetailModal();
   }
 
   render() {
@@ -61,7 +69,8 @@ class Photos extends React.Component {
           <Modal.Body>
              <PhotoDetail
                hideModal = {this.hidePhotoDetailModal}
-               selectedPhoto = {this.state.selectedPhoto}/>
+               selectedPhoto = {this.state.selectedPhoto}
+               deleteSelectedPhoto = {this.deletePhoto}/>
           </Modal.Body>
         </Modal>
 
