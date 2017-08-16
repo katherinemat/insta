@@ -3,6 +3,7 @@ import Photo from "../models/photo.js";
 
 import Feed from "./Feed";
 import NewPhoto from "./NewPhoto";
+import PhotoDetail from "./PhotoDetail";
 
 class Photos extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class Photos extends React.Component {
   render() {
     return (
       <div>
+        <PhotoDetail />
         <NewPhoto onNewPhotoCreation = {this.addNewPhoto}/>
         <Feed photoList = {this.state.masterPhotoList} />
       </div>
